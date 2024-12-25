@@ -1,7 +1,5 @@
 # Online-Complaint-Box-Portal
 
-     A streamlined and efficient platform for submitting and managing complaints related to hostels, classrooms, and premises. This project integrates functionality for students, teachers, and administrators, providing seamless communication and complaint resolution.
-
 
 
 # Table of Contents
@@ -91,8 +89,8 @@ The **Complaint Box Portal** is a web-based application designed to manage compl
 
 
 ### **Contact**
-**👤 Akash Bahure**
-**📧 Email: akash.bahure@example.com**
+**👤 Akash Bahure**   <br>
+**📧 Email: akash.bahure@example.com** <br>
 **🔗 GitHub: github.com/akash-bahure**
 
 
