@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestion Box</title>
+    <link rel="stylesheet" href="css/suggestion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar (shared across all pages) -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo">
+            <span>Complaint Box</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
+            <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li class="dropdown">
+                <a href="index.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Side Navigation Bar for Switching Sections -->
+    <div class="side-navbar">
+        <ul>
+            <li><a href="#complaintSubmission" onclick="showSection('complaintSubmission')"><i class="fas fa-tasks"></i>
+                    Complaint Submission</a></li>
+            <li><a href="#complaintStatus" onclick="showSection('complaintStatus')"><i class="fas fa-tasks"></i>
+                    Complaint Status</a></li>
+            <li><a href="#profileManagement" onclick="showSection('profileManagement')"><i class="fas fa-users"></i>
+                    Profile Management</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Complaint Submission Section -->
+        <section id="complaintSubmission" class="content-section" style="display: block;">
+            <h2>Complaint Submission</h2>
+            <form id="complaintForm" onsubmit="submitComplaint(event)">
+                <label for="userRole">User Role*</label>
+                <select name="user_role" id="user_role" required>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+
+                <!-- <label for="department">Department*</label>
+                <select id="department" name="department" required>
+                    <option value="mca">MCA</option>
+                    <option value="it">IT</option>
+                    <option value="cse">CSE</option>
+                    <option value="mechanical">MECHANICAL</option>
+                    <option value="electrical">ELECTRICAL</option>
+                </select> -->
+
+                <label for="category">Category*</label>
+                <select id="category" name="category" required>
+                    <option value="Hostel">Hostel</option>
+                    <option value="Classroom">Classroom</option>
+                    <option value="Premises">Premises</option>
+                </select>
+
+                <label for="title">Title*</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Description:(mention your department name)*</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="urgency">Urgency*</label>
+                <select id="urgency" name="urgency">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <label for="photo">Upload a Photo*</label>
+                <input type="file" id="photo" name="photo" accept="image/*" capture="camera" required>
+
+                <button type="submit">Submit Complaint</button>
+            </form>
+
+            <!-- Success message container -->
+            <div id="successMessage" style="display: none; color: green; margin-top: 10px;">Complaint submitted
+                successfully!!!!</div>
+        </section>
+
+
+        <!-- Complaint Status Section -->
+
+        <section id="complaintStatus" class="content-section" style="display: none;">
+            <h2>Complaint Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>View Details</th> <!-- Added View Details column -->
+
+                    </tr>
+                </thead>
+                <tbody id="complaintTableBody" >
+                    <!-- Dynamic content: Complaints will be populated here  -->
+                </tbody>
+            </table>
+        </section>
+
+
+        <form id="profileManagement" class="content-section" style="display: none;">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Update Profile</button>
+        </form>
+
+        <p id="message"></p>
+
+
+
+    </div>
+
+
+    <script>
+
+
+
+ /**
+         * Show the selected section and hide others
+         * @param {string} sectionId - The ID of the section to display
+         */
+         function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+
+            // Hide all sections
+            sections.forEach(section => section.style.display = 'none');
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
+
+
+
+        // Retrieve the token from local storage
+        const token = localStorage.getItem('authToken');
+
+        if (!token) {
+            alert("No token found. Redirecting to login page.");
+            window.location.href = 'login.html';
+        }
+
+    
+        async function submitComplaint(event) {
+            event.preventDefault();
+
+            const formElement = document.getElementById('complaintForm');
+            const formData = new FormData(formElement);
+
+            try {
+                const response = await fetch('http://localhost:3000/submit_complaint', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}` // Only set Authorization, not Content-Type
+                    },
+                    body: formData
+                });
+
+                const result = await response.text();
+
+                if (response.ok) {
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.style.display = 'block';
+                    successMessage.textContent = result;
+                    formElement.reset();
+
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    console.error('Submission failed:', result);
+                    alert(`Error: ${result}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the complaint.');
+            }
+        }
+
+        // Load user complaints
+        function loadUserComplaints(userId, userRole) {
+            fetch('http://localhost:3000/admin/complaint', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}` // Send the token in the Authorization header
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('complaintTableBody');
+                    tableBody.innerHTML = ''; // Clear previous rows
+
+                    if (data.success && data.complaints.length > 0) {
+                        data.complaints.forEach(complaint => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                            <td>${complaint.title}</td>
+                            <td>${complaint.category}</td>
+                            <td>${complaint.status}</td>
+                            <td>
+                                <button onclick='viewDetails(${JSON.stringify(complaint)})'>
+                                    View Details
+                                </button>
+                            </td>
+                        `;
+                            tableBody.appendChild(row);
+                        });
+                    } else {
+                        tableBody.innerHTML = '<tr><td colspan="4">No complaints found.</td></tr>';
+                    }
+                })
+                .catch(error => console.error('Error loading user complaints:', error));
+        }
+
+        function viewDetails(complaint) {
+            // Store complaint details in localStorage
+            localStorage.setItem('complaintDetails', JSON.stringify(complaint));
+
+            // Redirect to the details page
+            window.location.href = 'complaint_details.html'; // Change to your details page URL
+        }
+
+        // Example usage
+        loadUserComplaints();
+
+
+
+        //profile update
+
+        document.getElementById('profileManagement').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const newUsername = document.getElementById('newUsername').value;
+            const email = document.getElementById('email').value; // Email is unique
+            const password = document.getElementById('password').value;
+
+            if (!email) {
+                alert('Email is required to update the profile.');
+                return;
+            }
+
+            // Send the update request to the backend
+            fetch(`http://localhost:3000/api/profile`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ newUsername, email, password }), // Sending all fields
+            })
+                .then(response => response.json())
+                .then(result => {
+                    const message = document.getElementById('message');
+                    if (result.success) {
+                        message.textContent = 'Profile updated successfully!';
+                        message.style.color = 'green';
+                    } else {
+                        message.textContent = result.message;
+                        message.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating profile:', error);
+                    const message = document.getElementById('message');
+                    message.textContent = 'An error occurred. Please try again.';
+                    message.style.color = 'red';
+                });
+        });
+
+        // Show the first section by default
+        showSection('complaintSubmission');
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Subpanel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main section styling */
+        .main {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .main img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .main h1 {
+            color: #333;
+        }
+
+        .main .buttons {
+            margin-top: 20px;
+        }
+
+        .main .buttons a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .main .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Logo">
+            <span id="department-name">Department</span>
+        </div>
+        <div class="nav-links">
+            <a href="dept-home.html?department=MCA">Home</a>
+            <a href="subpanel.html?department=MCA">Assigned Complaints</a>
+            <a href="dept-profile.html?department-MCA">Profile</a>
+            <a href="index.html">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Section                   -->
+     <!-- here it is for only mca departments complaints are seen in every sdepartment section  -->
+    <div class="main">
+        <img src="img/premises.jpeg" alt="Welcome Image">
+        <h1>Welcome to the <span id="department-heading">Department</span> department</h1>
+        <div class="buttons">
+            <a href="subpanel.html?department=MCA">Assigned Complaints</a>             
+            <a href="dept-profile.html">Profile</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 All Rights Reserved | Department Management System
+    </footer>
+
+    <script>
+        // Dynamically set the department name based on URL parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const department = params.get('department') || "Unknown Department";
+
+            // Update navbar and main section department names
+            document.getElementById('department-name').textContent = department + " Panel";
+            document.getElementById('department-heading').textContent = department;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Details</title>
+    <style>
+        .complaint-details {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .complaint-details h2 {
+            margin-bottom: 10px;
+        }
+        #complaintPhoto {
+            padding-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        #imageMessage {
+            color: red;
+            font-weight: bold;
+        }
+        /* Add styles for the status */
+        .status {
+            font-weight: bold;
+        }
+        .accepted{
+            color: green;
+        }
+        .pending {
+            color: orange;
+        }
+        .resolved {
+            color: yellow;
+        }
+        .in-progress {
+            color: blue;
+        }
+        .rejected{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="complaint-details" id="complaintDetailsContainer">
+        <h2>Complaint Details</h2>
+        <p><strong>Title:</strong> <span id="complaintTitle"></span></p>
+        <p><strong>Category:</strong> <span id="complaintCategory"></span></p>
+        <p><strong>Description:</strong> <span id="complaintDescription"></span></p>
+        <p><strong>Status:</strong> <span id="complaintStatusMessage"></span></p> <!-- Display the message here -->
+        <p><strong>Photo:</strong> <img id="complaintPhoto" alt="Complaint Photo" /> </p>
+        <p id="imageMessage" style="display:none;"></p> <!-- This is where the message will appear if no image is found -->
+    </div>
+
+    <script>
+        // Retrieve complaint details from localStorage
+        const complaint = JSON.parse(localStorage.getItem('complaintDetails'));
+
+        if (complaint) {
+            // Fill in the complaint details on the page
+            document.getElementById('complaintTitle').textContent = complaint.title;
+            document.getElementById('complaintCategory').textContent = complaint.category;
+            document.getElementById('complaintDescription').textContent = complaint.description;
+
+            // Update the status message
+            const status = complaint.status.toLowerCase(); // Get the status
+            const statusClass = status.replace(/ /g, '-'); // Replace spaces with hyphens to create a valid class name
+            const statusMessage = `Your complaint is <span class="status ${statusClass}">${complaint.status}</span>. `;
+            document.getElementById('complaintStatusMessage').innerHTML = statusMessage; // Display status message with HTML
+
+            // Set the image source (if available)
+            const complaintPhoto = document.getElementById('complaintPhoto');
+            const imageMessage = document.getElementById('imageMessage'); // Assuming you add an element for the message
+
+            if (complaint.photo) {
+                // Construct the image URL based on the filename stored in localStorage
+                complaintPhoto.src = `/admin-portal-backend/uploads/${complaint.photo}`; // Construct the full path using the filename
+                complaintPhoto.style.display = 'block'; // Make sure the image is visible
+                if (imageMessage) {
+                    imageMessage.style.display = 'none'; // Hide the "image not available" message if the image is found
+                }
+            } else {
+                // Handle the case where no image is available
+                console.log("Image not available");
+                complaintPhoto.style.display = 'none'; // Hide the image if no photo URL is provided
+
+                // Display a message when there is no image
+                if (imageMessage) {
+                    imageMessage.textContent = 'Image not available'; // Display the message
+                    imageMessage.style.display = 'block'; // Make the message visible
+                }
+            }
+        } else {
+            alert('No complaint details found.');
+            window.location.href = 'index.html'; // Redirect to the main page if no complaint data is found
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Suggestion Box</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/c932d99d51.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Complaint Box</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
+            <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-users"></i>Profile</a>
+                <div class="dropdown-content">
+                    <a href="student-registration.html">Visit as Student</a>
+                    <a href="teacher-registration.html">Visit as Teacher</a>
+                    <a href="login.html">Admin</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Teacher Registration Form -->
+    <div class="form-container">
+        <h2>Teacher Registration</h2>
+        <form action="/teacher-register" method="POST" id="teacherRegistrationForm"
+            onsubmit="handleTeacherRegistration(event)">
+            <div class="label">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="btn">Register</button>
+            </div>
+        </form>
+
+        <p>Already registered? <a href="teacher-login.html">Login here</a></p>
+    </div>
+
+
+    <!-- Handle the form submission and connect to the backend: -->
+    <script>
+        function handleTeacherRegistration(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:3000/teacher-register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Registration successful! click ok!');
+                        window.location.href = 'teacher-login.html';
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

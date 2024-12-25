@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Dashboard - Home</title>
+
+    <style>
+        /* Basic Styling for the Warden Dashboard Home Page */
+        /* Body styling */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #fdf8e1;
+            /* padding: 20px; */
+            overflow-x: hidden;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #45a049;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .logo span {
+            color: #424242;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            position: relative;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 16px 20px;
+            display: block;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            background-color: #f2b5d4;
+            border-radius: 5px;
+            color: #5a3d5c;
+        }
+
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hostel-image {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-message {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+            animation: colorChange 3s infinite;
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #333;
+            }
+
+            25% {
+                color: #4CAF50;
+            }
+
+            50% {
+                color: #45a049;
+            }
+
+            75% {
+                color: #008CBA;
+            }
+
+            100% {
+                color: #333;
+            }
+        }
+
+        .description {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .buttons-container a {
+            background-color: #4CAF50;
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .buttons-container a:hover {
+            background-color: #7bd87f;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Warden dashboard</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="wardenHome.html"></i>Home</a></li>
+            <li><a href="warden.html">Assigned Complaints</a></li>
+            <li><a href="wardenprofile.html">Profile</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container (Home Page) -->
+    <div class="main-container">
+        <!-- Hostel Image -->
+        <img src="img/hostel.png" alt="Hostel" class="hostel-image">
+        <!-- Welcome Message -->
+        <div class="welcome-message">Welcome, Hostel Warden!</div>
+        <div class="description">
+            You can manage and track complaints submitted by students and resolve them efficiently through this
+            dashboard.
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="buttons-container">
+            <a href="warden.html">Assigned Complaints</a>
+            <a href="wardenprofile.html">View Profile</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 Hostel Management System.
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complaint-box</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/c932d99d51.js" crossorigin="anonymous"></script>
+    <!-- Add Font Awesome Icons (CDN) -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Complaint Box</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
+            <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-users"></i>Profile</a>
+                <div class="dropdown-content">
+                    <a href="student-registration.html">Visit as Student</a>
+                    <a href="teacher-registration.html">Visit as Teacher</a>
+                    <a href="login.html">Admin</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-users"></i> Subpanels </i></a>
+                <div class="dropdown-content">
+                    <a href="warden-login.html" >Hostel Warden</a>
+                    <a href="landingpage.html" >Department Head</a>
+                    <a href="#">Premises Cleaning Head</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="img/vid1.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="main-section">
+       
+        <div class="heading">
+            <!-- <img src="/admin-portal-frontend/img/clg.jpg" alt=""> -->
+            <h1>Welcome to GECA Complaint-Box Portal</h1>
+            <p>Your voice matters! Let’s turn complaints into solutions together!</p>
+            <a href="about.html"><button class="btnn"> Learn More</button></a>
+        </div>
+        <div class="half">
+            <!-- <h2> Your Platform for Seamless Feedback and Issue Reporting."</h2> -->
+                <div class="half1">
+                    <!-- <video src="/admin-portal-frontend/img/GIF.mp4"></video> -->
+                    <video autoplay loop width="200" src="img/GIF.mp4"></video>
+
+                </div>
+                <div class="half2">
+                    
+                    <h2>"Building a Better Environment, Together."</h2>
+                    <h3>"Your Voice, Our Action – Together We Improve!"</h3>
+                   <h3> "Report, Resolve, Repeat – Improving Step by Step."</h3>
+                       <h3> "Making Campus Life Better, One Complaint at a Time."</h3>
+                </div>
+
+             </div>
+  
+       
+    </div>
+    
+    
+
+    
+
+
+<div class="sec">
+    <div class="sec1">
+        <div class="para">
+            <h1>WHY WE CREATED THIS MODULE</h1>
+            <p> At our core,we believe that every complaint is a chance for improvement. We’re not just a portal; we’re a revolution in how grievances are handled! <br><br>
+                there were no such facitilies avaliable to register a complaint and traditional means of pen and paper were used to register a complaint! <br><br>
+                
+
+                Our mission? To transform your rants into actionable insights. We take your frustrations seriously, and we’re here to ensure your voice is heard loud and clear! <br><br>
+                
+                Join our community of passionate individuals who refuse to stay silent. Together, we can create a world where complaints lead to real change!</p>
+        </div>
+        <div class="ig">
+        <img src="/admin-portal-frontend/img/MAIN.jpg" alt="" class="image">
+    </div>
+    </div>
+</div>
+
+
+
+    <!-- about -->
+    <section class="about-section">
+        <div class="about-container">
+            <h2>About Our Complaint-Box Portal</h2>
+            <p>
+                Welcome to our Complaint-Box Portal! This platform is designed to provide a convenient way for students
+                and teachers to share their feedback and suggestions regarding various aspects of the educational
+                environment.
+            </p>
+            <p>
+                Our goal is to enhance communication within the community by allowing users to report issues, suggest
+                improvements, and express their thoughts in a user-friendly manner. We value your input and strive to
+                create a better experience for everyone.
+            </p>
+            <p>
+                Whether you have a concern about classroom facilities or suggestions for events, this portal is here to
+                listen and act upon your ideas. Join us in making our educational environment a better place!
+            </p>
+        </div>
+    </section>
+
+
+
+    <div class="containerr">
+        <h1>Facility Complaint Categories</h1>
+        <div class="container">
+            <div class="box">
+                <h2>Classroom</h2>
+                <p>Details about classroom-related issues, such as maintenance and facilities.</p>
+                <button class="btn1" id="viewMoreClassroom">View more</button>
+            </div>
+            <div class="box">
+                <h2>Hostel</h2>
+                <p>Details about hostel-related issues, including room and facility concerns.</p>
+                <button class="btn1" id="viewMoreHostel">View more</button>
+            </div>
+            <div class="box">
+                <h2>Premises</h2>
+                <p>Details about premises-related issues like cleaning and campus upkeep.</p>
+                <button class="btn1" id="viewMorePremises">View more</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Classroom Modal -->
+    <div class="modal" id="classroomModal">
+        <button class="close-btn" id="closeClassroomModal">Close</button>
+        <img src="img/modal.jpeg" alt="Classroom Image">
+        <div class="modal-content">
+            <h3>Classroom Issues</h3>
+            <ul>
+                <li>Broken chairs and desks</li>
+                <li>Projector maintenance</li>
+                <li>Lighting issues</li>
+                <li>AC or fan malfunction</li>
+            </ul>
+            
+        </div>
+    </div>
+    
+    <!-- Hostel Modal -->
+    <div class="modal" id="hostelModal">
+        <button class="close-btn" id="closeHostelModal">Close</button>
+        <img src="img/hostel.jpeg" alt="Hostel Image">
+        <div class="modal-content">
+            <h3>Hostel Issues</h3>
+            <ul>
+                <li>Room maintenance</li>
+                <li>Water supply issues</li>
+                <li>Cleaning services</li>
+                <li>Electrical problems</li>
+            </ul>
+            <a href="warden-login.html"><button>go to</button></a>
+        </div>
+    </div>
+    
+    <!-- Premises Modal -->
+    <div class="modal" id="premisesModal">
+        <button class="close-btn" id="closePremisesModal">Close</button>
+        <img src="img/premises.jpg" alt="Premises Image">
+        <div class="modal-content">
+            <h3>Premises Issues</h3>
+            <ul>
+                <li>Gardening and landscaping</li>
+                <li>Waste management</li>
+                <li>Security services</li>
+                <li>Cleaning and hygiene</li>
+            </ul>
+        </div>
+    </div>
+
+
+ <!-- Contact Section -->
+<div class="contact-section">
+    <div class="contact-box">
+        <h2>Contact Us</h2>
+        <p>We're here to help! Reach out with any questions or inquiries.</p>
+        
+        <form class="contact-form">
+            <div class="input-group">
+                <label for="name"><i class="fas fa-user"></i></label>
+                <input type="text" id="name" placeholder="Your Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input type="email" id="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phone"><i class="fas fa-phone"></i></label>
+                <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            </div>
+
+            <div class="input-group">
+                <label for="message"><i class="fas fa-comment"></i></label>
+                <textarea id="message" rows="4" placeholder="Your Inquiry" required></textarea>
+            </div>
+
+            <button type="submit" class="btn" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <h2>Our Campus Location</h2>
+        <div class="map-container">
+            <img src="/admin-portal-frontend/img/map1.jpg" alt="Campus Map" class="campus-map">
+            <div class="map-overlay">
+                <h3>Explore Our Campus</h3>
+                <p>Find your way around with our interactive campus map.</p>
+                <button class="explore-btn" onclick="openModal()">Explore</button>
+            </div>
+        </div>
+    </div>
+     
+
+    <!-- Modal for Expanded Map -->
+    <div id="mapModal"  class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Expanded Campus Map</h3>
+            <img src="/admin-portal-frontend/img/map2.jpg" alt="Detailed Campus Map" class="detailed-map">
+            <p>Explore our college campus in detail, including key locations such as academic buildings, libraries, dormitories, and recreational areas.</p>
+        </div>
+    </div>
+    
+      <!-- Footer Section -->
+      <footer class="footer">
+        <p>All Rights Reserved © GECA 2024</p>
+    </footer>
+
+
+
+    <script> 
+    // JavaScript to open and close the modal
+        function openModal() {
+            document.getElementById("mapModal").style.display = "block";
+        }
+        
+        function closeModal() {
+            document.getElementById("mapModal").style.display = "none";
+        }
+        
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            let modal = document.getElementById("mapModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+    
+
+
+
+
+
+
+
+        // Get modal elements
+        const classroomModal = document.getElementById("classroomModal");
+        const hostelModal = document.getElementById("hostelModal");
+        const premisesModal = document.getElementById("premisesModal");
+        const overlay = document.getElementById("overlay");
+    
+        // Get buttons
+        const viewMoreClassroom = document.getElementById("viewMoreClassroom");
+        const viewMoreHostel = document.getElementById("viewMoreHostel");
+        const viewMorePremises = document.getElementById("viewMorePremises");
+    
+        // Get close buttons
+        const closeClassroomModal = document.getElementById("closeClassroomModal");
+        const closeHostelModal = document.getElementById("closeHostelModal");
+        const closePremisesModal = document.getElementById("closePremisesModal");
+    
+        // Show Classroom modal
+        viewMoreClassroom.addEventListener("click", function() {
+            classroomModal.style.display = "block";
+            overlay.style.display = "block";
+        });
+    
+        // Show Hostel modal
+        viewMoreHostel.addEventListener("click", function() {
+            hostelModal.style.display = "block";
+            overlay.style.display = "block";
+        });
+    
+        // Show Premises modal
+        viewMorePremises.addEventListener("click", function() {
+            premisesModal.style.display = "block";
+            overlay.style.display = "block";
+        });
+    
+        // Close Classroom modal
+        closeClassroomModal.addEventListener("click", function() {
+            classroomModal.style.display = "none";
+            overlay.style.display = "none";
+        });
+    
+        // Close Hostel modal
+        closeHostelModal.addEventListener("click", function() {
+            hostelModal.style.display = "none";
+            overlay.style.display = "none";
+        });
+    
+        // Close Premises modal
+        closePremisesModal.addEventListener("click", function() {
+            premisesModal.style.display = "none";
+            overlay.style.display = "none";
+        });
+    
+        // Close modal when clicking outside (on the overlay)
+        overlay.addEventListener("click", function() {
+            classroomModal.style.display = "none";
+            hostelModal.style.display = "none";
+            premisesModal.style.display = "none";
+            overlay.style.display = "none";
+        });
+
+
+
+
+
+
+
+
+
+
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const dots = document.querySelectorAll('.dot');
+
+        // Function to show the current slide
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
+        }
+
+        // Next button functionality
+        document.querySelector('.next').addEventListener('click', function() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        // Previous button functionality
+        document.querySelector('.prev').addEventListener('click', function() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        // Dot navigation
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', function() {
+                currentSlide = i;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Automatically move to the next slide every 5 seconds
+        setInterval(function() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 3000);
+
+
+
+
+
+        window.onscroll = function() {
+    const topImage = document.querySelector('.top-image');
+    const bottomImage = document.querySelector('.bottom-image');
+
+    /* Adjust the transform based on scroll position for parallax */
+    let scrollPosition = window.pageYOffset;
+    topImage.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    bottomImage.style.transform = `translateY(${scrollPosition * -0.5}px)`;
+};
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

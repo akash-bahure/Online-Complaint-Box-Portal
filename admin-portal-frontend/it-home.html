@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main section styling */
+        .main {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .main h1 {
+            color: #333;
+        }
+
+        .main .department-buttons {
+            margin-top: 30px;
+        }
+
+        .main .department-buttons a {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .main .department-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <span id="department-name">Department Management</span>
+        </div>
+        <div class="nav-links">
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="main">
+        <h1>Welcome to the Department Management System</h1>
+        <p>Select your department to view assigned complaints.</p>
+        <div class="department-buttons">
+            <a href="subpanel.html?department=MCA">MCA Department</a>
+            <a href="subpanel.html?department=IT">IT Department</a>
+            <a href="subpanel.html?department=Mechanical">Mechanical Department</a>
+            <a href="subpanel.html?department=Electrical">Electrical Department</a>
+            <!-- Add more departments as needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 All Rights Reserved | Department Management System
+    </footer>
+</body>
+</html>

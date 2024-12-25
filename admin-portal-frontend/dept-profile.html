@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Subpanel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+/* main */
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .warden-details {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .warden-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .warden-info h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .warden-info h3 {
+            color: rgb(122, 84, 34);
+        }
+
+        .warden-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+       
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Logo">
+            <span id="department-name">Department</span>
+        </div>
+        <div class="nav-links">
+            <a href="dept-home.html?department=MCA">Home</a>
+            <a href="subpanel.html?department=MCA">Assigned Complaints</a>
+            <a href="dept-profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <!-- Warden Details Section -->
+        <div class="warden-details">
+
+            <img src="img/user.png" alt="Warden" class="warden-image">
+
+            <div class="warden-info">
+                <h3>Head Of Department</h3>
+                <h2>Dr.Shetiye Sir</h2>
+                <p><strong>Address:</strong> 123 Green Street, Hostel Complex, Cityville</p>
+                <p><strong>Contact:</strong> +91 9876543210</p>
+                <p><strong>Email:</strong> abc@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 All Rights Reserved | Department Management System
+    </footer>
+
+    
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Warden Dashboard</title>
+    <link rel="stylesheet" href="css/warden-dashboard.css">
+    <style>
+        /* Basic Styling for the Warden Dashboard */
+        
+
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Warden dashboard</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="wardenHome.html"></i>Home</a></li>
+            <li><a href="warden.html">Assigned Complaints</a></li>
+            <li><a href="wardenprofile.html">Profile</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="dashboard">
+        <h1>Welcome, Hostel Warden</h1>
+        <p>Complaints forwarded to you:</p>
+
+        <!-- Table for displaying complaints -->
+        <table id="complaintTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Complaint Photo</th>
+                    <th>Action</th> <!-- New column for action buttons -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Function to display multiple complaints
+        function displayComplaints() {
+            const complaintsData = localStorage.getItem("complaintsData");
+
+            if (!complaintsData) {
+                alert("No complaint data found.");
+                return;
+            }
+
+            const data = JSON.parse(complaintsData);
+
+            // Get the table body where we will insert the complaint data
+            const tableBody = document.querySelector('#complaintTable tbody');
+
+            // Loop through complaints data and create a new row for each complaint
+            data.forEach((complaint, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${complaint.title}</td>
+                    <td>${complaint.description}</td>
+                    <td>${complaint.status}</td>
+                    <td><img src="/admin-portal-backend/uploads/${complaint.photo}" alt="Complaint Photo" width="100px" /></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="in-progress" onclick="updateStatus(${index}, 'In Progress')">In Progress</button>
+                            <button class="resolve" onclick="updateStatus(${index}, 'Resolved')">Resolve</button>
+                            <button class="delete" onclick="deleteComplaint(${index})">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to update the status of the complaint
+        function updateStatus(index, status) {
+            const complaintsData = JSON.parse(localStorage.getItem("complaintsData"));
+            complaintsData[index].status = status;
+            localStorage.setItem("complaintsData", JSON.stringify(complaintsData));
+            alert(`Complaint status updated to ${status}`);
+            window.location.reload(); // Reload to see changes
+        }
+
+        // Function to delete a complaint
+        function deleteComplaint(index) {
+            const complaintsData = JSON.parse(localStorage.getItem("complaintsData"));
+            complaintsData.splice(index, 1); // Remove the complaint at the given index
+            localStorage.setItem("complaintsData", JSON.stringify(complaintsData));
+            alert("Complaint deleted successfully.");
+            window.location.reload(); // Reload to see updated list
+        }
+
+        // Call displayComplaints when the page is loaded
+        window.onload = displayComplaints;
+    </script>
+</body>
+
+</html>

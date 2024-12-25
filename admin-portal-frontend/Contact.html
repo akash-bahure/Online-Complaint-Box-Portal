@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Suggestion Box</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/c932d99d51.js" crossorigin="anonymous"></script>
+    <style>
+      .social-icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+
+      }
+      .social-icons a{
+        padding: 20px;
+        font-size: 60px;
+        /* border: 2px solid red; */
+        /* border-radius: 10px; */
+      }
+      .social-icons i:hover{
+        color: blue;
+      }
+
+      .contact-left h2{
+        text-align: center;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .contact-left p{
+        text-align: center;
+        font-size: 1.4rem;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        padding: 10px;
+        
+      }
+      .contact-left p:hover{
+        color: blue;
+      }
+
+      .contact-left i{
+        padding-right: 4px;
+        color: black;
+      }
+      .contact-left i{
+        /* color: blue; */
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Complaint Box</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i>About</a></li>
+            <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-users"></i>Profile</a>
+                <div class="dropdown-content">
+                    <a href="student-registration.html">Visit as Student</a>
+                    <a href="teacher-registration.html">Visit as Teacher</a>
+                    <a href="login.html">Admin</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main Section with Suggestion Box Image -->
+    
+       
+ <!-- Contact Section -->
+<div class="contact-section">
+    <div class="contact-box">
+        <h2>Contact Us</h2>
+        <p>We're here to help! Reach out with any questions or inquiries.</p>
+        
+        <form class="contact-form">
+            <div class="input-group">
+                <label for="name"><i class="fas fa-user"></i></label>
+                <input type="text" id="name" placeholder="Your Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input type="email" id="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phone"><i class="fas fa-phone"></i></label>
+                <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            </div>
+
+            <div class="input-group">
+                <label for="message"><i class="fas fa-comment"></i></label>
+                <textarea id="message" rows="4" placeholder="Your Inquiry" required></textarea>
+            </div>
+
+            <button type="submit" class="btn" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+              <div class="contact-left">
+              <h2>Contact Info:-</h2>
+                <p><i class="fa-solid fa-paper-plane"></i>geca@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>8261916379</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+        
+            </div>
+    
+
+</body>
+</html>

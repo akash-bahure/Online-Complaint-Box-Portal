@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warden Profile</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #fdf8e1;
+            /* padding: 20px; */
+            overflow-x: hidden;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #45a049;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .logo span {
+            color: #424242;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            position: relative;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            padding: 16px 20px;
+            display: block;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            background-color: #f2b5d4;
+            border-radius: 5px;
+            color: #5a3d5c;
+        }
+
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .warden-details {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .warden-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+
+        .warden-info h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .warden-info h3 {
+            color: rgb(122, 84, 34);
+        }
+
+        .warden-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .hostel-details {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hostel-details h3 {
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+
+        .guards-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .guard-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .guard-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .guard-card h4 {
+            margin: 10px 0;
+            color: #4CAF50;
+        }
+
+        .guards h2 {
+            color: rgb(122, 84, 34);
+        }
+
+        .guard-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Suggestion Box Logo"> <!-- Replace with your logo image -->
+            <span>Warden dashboard</span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="wardenHome.html"></i>Home</a></li>
+            <li><a href="warden.html">Assigned Complaints</a></li>
+            <li><a href="wardenprofile.html">Profile</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Warden Details Section -->
+        <div class="warden-details">
+
+            <img src="img/user.png" alt="Warden" class="warden-image">
+
+            <div class="warden-info">
+                <h3>Hostel Warden</h3>
+                <h2>Mr.Rajesh Patil</h2>
+                <p><strong>Address:</strong> 123 Green Street, Hostel Complex, Cityville</p>
+                <p><strong>Contact:</strong> +91 9876543210</p>
+                <p><strong>Email:</strong> abc@hostel.com</p>
+            </div>
+        </div>
+
+        <!-- Hostel Details Section -->
+        <div class="hostel-details">
+            <h3>Hostel Details</h3>
+            <p><strong>Total Rooms:</strong> 50</p>
+            <p><strong>Available Rooms:</strong> 10</p>
+            <p><strong>Occupied Rooms:</strong> 40</p>
+        </div>
+
+        <!-- Guards Section -->
+        <div class="guards">
+            <h2>Hostel Guards</h2>
+            <div class="guards-section">
+
+                <!-- Guard Card 1 -->
+                <div class="guard-card">
+                    <img src="img/user.png" alt="Guard 1" class="guard-image">
+                    <h4>Abc</h4>
+                    <p><strong>Details:</strong> Experienced security guard with 5 years of service.</p>
+                    <p><strong>Shift Type:</strong> Morning</p>
+                    <p><strong>Shift Duration:</strong> 6 AM - 2 PM</p>
+                </div>
+
+                <!-- Guard Card 2 -->
+                <div class="guard-card">
+                    <img src="img/user.png" alt="Guard 2" class="guard-image">
+                    <h4>xyz</h4>
+                    <p><strong>Details:</strong> Vigilant and responsible guard with a focus on safety.</p>
+                    <p><strong>Shift Type:</strong> Afternoon</p>
+                    <p><strong>Shift Duration:</strong> 2 PM - 10 PM</p>
+                </div>
+
+                <!-- Guard Card 3 -->
+                <div class="guard-card">
+                    <img src="img/user.png" alt="Guard 3" class="guard-image">
+                    <h4>Abc</h4>
+                    <p><strong>Details:</strong> Dedicated night guard with excellent observation skills.</p>
+                    <p><strong>Shift Type:</strong> Night</p>
+                    <p><strong>Shift Duration:</strong> 10 PM - 6 AM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

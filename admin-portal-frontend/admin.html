@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            /* text-align: center; */
+            color: #333;
+            padding-top: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .chart-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+
+
+        /* ........
+         */
+
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none;
+        }
+
+        ul li:hover .dropdown {
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 10% auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Admin Page Container -->
+    <div class="admin-container">
+
+        <!-- Sidebar / Vertical Navbar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="img/logo2.jpg" alt="Admin Logo" class="admin-logo">
+                <h2 style="color: white;">Admin</h2>
+                <div class="line"></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#dashboard"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a></li>
+                <div class="line"></div>
+         <!-- <li>
+                    <a href="complaint.html"><i class="fas fa-tasks"></i> Complaint Section </a>
+                    <ul class="dropdown">
+                        <li><a href=" complaints.html?category=hostel" id="hostel">Hostel</a></li>
+                        <li><a href="complaints.html?category=premises" id="Premises">Premises</a></li>
+                        <li><a href="complaints.html?category=classroom" id="classroom">Classroom</a></li>
+                    </ul>
+                </li>  -->
+
+
+                <li>
+                    <a href="#"><i class="fas fa-tasks"></i> Complaint Section </a>
+                    <ul class="dropdown">
+                        <li><a href="hostel-complaint.html" id="hostel">Hostel</a></li>
+                        <li><a href="premises-complaint.html" id="premises">Premises</a></li>
+                        <li><a href="classroom-complaint.html" id="classroom">Classroom</a></li>
+                    </ul>
+                </li>
+                
+                
+                
+               
+ 
+<!--  -->
+                <li>
+                    <a href="#"><i class="fas fa-images"></i> Gallery <i
+                            class="fas fa-chevron-down dropdown-icon"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Add Images</a></li>
+                        <li><a href="#">View Images</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fas fa-users"></i> Accounts <i
+                            class="fas fa-chevron-down dropdown-icon"></i></a>
+                    <ul class="dropdown" id="accountsDropdown">
+                        <li><a href="#" id="viewStudents">View Students</a></li>
+                        <li><a href="#" id="viewTeachers">View Teachers</a></li>
+                        <li><a href="#" id="viewAdmins">View Admins</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fas fa-users"></i> Subpanels <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                    <ul class="dropdown" id="subpanel">
+                        <li><a href="warden-login.html" id="">Hostel Warden</a></li>
+                        <li><a href="landingpage.html" id="">Department Head</a></li>
+                        <li><a href="#" id="">Premises Cleaning Head</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+     
+
+
+        <!-- Right Content Area -->
+        <div class="content-area">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="admin-info">
+                    <span>Admin</span>
+                    <img src="img/u.png" alt="Admin Picture" class="admin-pic">
+                    <a href="login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content" id="dashboard">
+                <h1>Admin Dashboard</h1>
+
+                <!-- Info Boxes -->
+                <div class="info-boxes">
+                    <div class="info-box blue">
+                        <h3>Student Count</h3>
+                        <p id="studentCount">Loading...</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Teacher Count</h3>
+                        <p id="teacherCount">Loading...</p>
+                    </div>
+                    <div class="info-box blue">
+                        <h3>Total Complaints</h3>
+                        <p id="totalComplaints">Loading...</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Pending Status</h3>
+                        <p id="pendingStatus">Loading...</p>
+                    </div>
+                    <div class="info-box blue">
+                        <h3>In Progress</h3>
+                        <p id="inProgress">Loading...</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Resolved</h3>
+                        <p id="resolved">Loading...</p>
+                    </div>
+                    <div class="info-box blue">
+                        <h3>Total System Users</h3>
+                        <p id="totalUsers">Loading...</p>
+                    </div>
+                    <!-- New Info Boxes for Accepted and Rejected -->
+                    <div class="info-box">
+                        <h3>Accepted</h3>
+                        <p id="acceptedStatus">Loading...</p>
+                    </div>
+                    <div class="info-box blue">
+                        <h3>Rejected</h3>
+                        <p id="rejectedStatus">Loading...</p>
+                    </div>
+                </div>
+
+                <h1>Complaints Analytics Dashboard</h1>
+                <div class="chart-container">
+                    <canvas id="complaintsByCategoryChart"></canvas>
+                </div>
+
+
+                <h1>Complaint Status Distribution</h1>
+                <div class="bar-container">
+                    <canvas id="statusChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <!-- <canvas id="complaintsByCategoryChart"></canvas> -->
+        </div>
+
+      
+
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+        integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <script src="js/bar.js"></script>
+    <script src="js/pie.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <script>
+
+        // Navigation logic for dropdown options
+        document.getElementById('viewStudents').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            window.location.href = 'students.html'; // Redirect to students page
+        });
+
+        document.getElementById('viewTeachers').addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location.href = 'teachers.html'; // Redirect to teachers page
+        });
+
+        document.getElementById('viewAdmins').addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location.href = 'users.html'; // Redirect to admins page
+        });
+
+
+
+
+
+
+
+  
+    </script>
+</body>
+
+</html>

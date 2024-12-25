@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Subpanel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            /* padding: 0; */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .action-buttons button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .in-progress {
+            background-color: #ffc107;
+            color: white;
+        }
+        .resolve {
+            background-color: #28a745;
+            color: white;
+        }
+        .delete {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo2.jpg" alt="Logo">
+            <span id="department-name">Department</span>
+        </div>
+        <div class="nav-links">
+            <a href="dept-Home.html?department=MCA">Home</a>
+            <a href="subpanel.html?department=MCA">Assigned Complaints</a>
+            <a href="dept-profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+        </div>
+    </div>
+
+
+    <h1 id="department-name">Department Complaints</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Complaint ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Photo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="complaint-list"></tbody>
+    </table>
+    
+
+    <script>
+
+
+        // Get the department from the URL
+        document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const department = params.get('department');
+    
+    // Log department to verify if it's being passed correctly
+    console.log("Department:", department);
+    
+    if (!department) {
+        alert("No department specified in the URL!");
+        return;
+    }
+
+    // Get complaints from local storage
+    const complaintsData = JSON.parse(localStorage.getItem(department)) || [];
+    console.log("Complaints Data:", complaintsData);
+
+    const complaintList = document.getElementById('complaint-list');
+    
+    if (complaintsData.length === 0) {
+        complaintList.innerHTML = '<tr><td colspan="6">No complaints found for this department.</td></tr>';
+        return;
+    }
+
+    // Populate the complaints in the table
+    complaintsData.forEach((complaint, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${complaint.id}</td>
+            <td>${complaint.title || 'N/A'}</td>
+            <td>${complaint.description || 'N/A'}</td>
+            <td>${complaint.status || 'Pending'}</td>
+            <td><img src="/admin-portal-backend/uploads/${complaint.photo}" alt="Complaint Photo" width="100px" /></td>
+            <td>
+                <div class="action-buttons">
+                    <button class="in-progress" onclick="updateStatus(${index}, 'In Progress')">In Progress</button>
+                    <button class="resolve" onclick="updateStatus(${index}, 'Resolved')">Resolve</button>
+                    <button class="delete" onclick="deleteComplaint(${index})">Delete</button>
+                </div>
+            </td>
+        `;
+        complaintList.appendChild(row);
+    });
+});
+
+// Function to update complaint status
+function updateStatus(index, status) {
+    const department = new URLSearchParams(window.location.search).get('department');
+    const complaintsData = JSON.parse(localStorage.getItem(department));
+
+    if (!complaintsData || !complaintsData[index]) return;
+
+    complaintsData[index].status = status;
+    localStorage.setItem(department, JSON.stringify(complaintsData));
+
+    alert(`Complaint status updated to ${status}`);
+    window.location.reload(); // Reload to see changes
+}
+
+// Function to delete complaint
+function deleteComplaint(index) {
+    const department = new URLSearchParams(window.location.search).get('department');
+    const complaintsData = JSON.parse(localStorage.getItem(department));
+
+    if (!complaintsData || !complaintsData[index]) return;
+
+    complaintsData.splice(index, 1); // Remove the complaint
+    localStorage.setItem(department, JSON.stringify(complaintsData));
+
+    alert("Complaint deleted successfully.");
+    window.location.reload(); // Reload to see updated list
+}
+
+
+
+
+    </script>
+</body>
+</html>
